@@ -11,9 +11,6 @@
     "allowJs": true,
     "outDir": "./dist",
     "esModuleInterop": true
-    // "types": ["node", "vite/client"]
   },
-  "exclude": [
-    "./dist"
-  ]
+  "exclude": ["./dist"]
 }
