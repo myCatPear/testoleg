@@ -4,14 +4,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 :root {
-    --tdr-font-family-base: 'Roboto', sans-serif;
-    --tdr-font-family-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco,
-      Consolas, 'Liberation Mono', 'Courier New', monospace;
+  --tdr-font-family-base: 'Roboto', sans-serif;
+  --tdr-font-family-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
 }
-  /**
+/**
  * Layouts
  * -------------------------------------------------------------------------- */
 
 :root {
-  --tdr-layout-max-width: 1280px;
+  --tdr-layout-max-width: 500px;
 }

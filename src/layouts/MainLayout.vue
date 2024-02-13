@@ -3,24 +3,24 @@ import AppHeader from '@/components/headers/AppHeaders.vue'
 </script>
 
 <template>
-    <div class="app">
-        <AppHeader />
+  <div class="app">
+    <AppHeader />
 
-        <div class="app-main">
-            <router-view />
-        </div>
+    <div class="app-main">
+      <router-view />
     </div>
+  </div>
 </template>
 
 <style scoped lang="scss">
 .app {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-
-    &-main {
-        flex-grow: 1;
-        overflow: hidden;
-    }
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  &-main {
+    flex-grow: 1;
+    overflow: hidden;
+  }
 }
 </style>
