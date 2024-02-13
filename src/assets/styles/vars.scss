@@ -8,23 +8,10 @@
     --tdr-font-family-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco,
       Consolas, 'Liberation Mono', 'Courier New', monospace;
 }
-
-/**
- * Colors
+  /**
+ * Layouts
  * -------------------------------------------------------------------------- */
 
- :root {
-    --tdr-primary-color: #F0F4F8
-    --tdr-secondary-color: #FFC857
-    --tdr-text-color: #333333
-    --tdr-box-shadow:#D3D3D3
-    --tdr-link-color: #007BFF
-  }
-  
-  .dark {
-    --tdr-primary-color: #2C3E50
-    --tdr-secondary-color: #E74C3C
-    --tdr-text-color: #FFFFFF
-    --tdr-box-shadow:#34495E
-    --tdr-link-color: #4ECDC4
-  }
+:root {
+  --tdr-layout-max-width: 1280px;
+}

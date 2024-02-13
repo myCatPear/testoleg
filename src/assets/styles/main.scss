@@ -1,22 +1,23 @@
-@import './vars.scss';
+@import "./vars.scss";
 
 *,
 ::before,
 ::after {
   box-sizing: border-box;
-}
-
-ol,
-ul {
-  list-style: none;
   margin: 0;
   padding: 0;
 }
 
-html.dark {
-  color-scheme: dark;
+
+ol,
+ul {
+  list-style: none;
 }
 
-body {
-  font-family: var(--tdr-font-family-base);
+
+
+#app {
+  width: var(--tdr-layout-max-width);
+  max-width: var(--tdr-layout-max-width);
+  margin: 0 auto;
 }

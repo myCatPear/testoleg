@@ -12,12 +12,15 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
+    "uuid": "^9.0.1",
     "vue": "^3.4.15",
-    "vue-router": "^4.2.5"
+    "vue-router": "^4.2.5",
+    "vuetify": "^3.5.3"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.6.1",
     "@types/node": "^20.10.6",
+    "@types/uuid": "^9.0.8",
     "@vitejs/plugin-vue": "^5.0.2",
     "eslint": "^8.56.0",
     "sass": "^1.69.6",
