@@ -1,15 +1,10 @@
-export type TodolistStatus = 'todo' | 'progress' | 'done'
+export type TodolistStatusType = 'todo' | 'progress' | 'done'
 
-export type TodolistInfo = {
+export type TodolistInfoType = {
+  id: string
   title: string
-  status: TodolistStatus
+  status: TodolistStatusType
   description?: string
 }
 
-export type Todolist = {
-  [id: string]: TodolistInfo
-}
-
-export type TodolistInfoWithKey = TodolistInfo & {
-  id: string
-}
+export type TodolistListType = TodolistInfoType[]

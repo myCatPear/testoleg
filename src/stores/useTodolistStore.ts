@@ -1,42 +1,47 @@
 import { computed, ref } from 'vue'
 import type {
-  Todolist,
-  TodolistInfoWithKey,
-  TodolistStatus,
-  TodolistInfo
+  TodolistListType,
+  TodolistStatusType,
+  TodolistInfoType
 } from '@/assets/types/todolist'
 
 // Список тудулистов
-const todoList: Todolist = {}
-// Текущий статус сортировки
-const currentStatusFilter = ref<TodolistStatus>('todo')
+const todolistList = ref<TodolistListType>([])
 
-// Получить все тудулисты
-const getAllTodolist = computed(() => {
-  const list: TodolistInfoWithKey[] = []
-  for (const key in todoList) {
-    list.push({ id: key, ...todoList[key] })
+export function useTodolistStore() {
+  // Текущий статус сортировки
+  const currentStatusFilter = ref<TodolistStatusType>('todo')
+
+  // Получить все тудулисты
+  const getAllTodolist = computed(() => {
+    return todolistList.value
+  })
+
+  // Получить список тудулистов по текущему значению фильтра currentStatusFilter
+  const filterTodolist = computed(() => {
+    return todolistList.value.filter((todo) => todo.status === currentStatusFilter.value)
+  })
+
+  // Добавить новый тудулист
+  const addNewTodo = (newTodoData: TodolistInfoType) => {
+    console.log('asdas')
+    todolistList.value.push(newTodoData)
   }
-  return list
-})
 
-// Получить список тудулистов по текущему значению фильтра currentStatusFilter
-const filterTodolist = computed(() => {
-  return getAllTodolist.value.filter((todo) => todo.status === currentStatusFilter.value)
-})
-
-// Добавить новый тудулист
-const addNewTodo = (newTodoId: string, newTodoData: TodolistInfo) => {
-  todoList[newTodoId] = { ...newTodoData }
-}
-
-// Удалить тудулист
-const deleteTodo = (todoId: string) => {
-  if (todoList[todoId]) {
-    delete todoList[todoId]
-    return true
+  // Удалить тудулист
+  const deleteTodo = (todoId: string) => {
+    if (todoId) {
+      todolistList.value = todolistList.value.filter((todo) => todo.id !== todoId)
+      return true
+    }
+    return false
   }
-  return false
-}
 
-export { getAllTodolist, filterTodolist, currentStatusFilter, addNewTodo, deleteTodo }
+  return {
+    getAllTodolist,
+    currentStatusFilter,
+    filterTodolist,
+    addNewTodo,
+    deleteTodo
+  }
+}

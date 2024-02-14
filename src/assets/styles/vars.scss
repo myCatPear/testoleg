@@ -15,3 +15,12 @@
 :root {
   --tdr-layout-max-width: 500px;
 }
+
+/**
+ * Dialogs
+ * -------------------------------------------------------------------------- */
+
+ :root {
+  --tdr-dialog-initial-width: 50%;
+  --tdr-dialog-full-width: 100%;
+}
