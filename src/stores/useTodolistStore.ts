@@ -10,7 +10,7 @@ const todolistList = ref<TodolistListType>([])
 
 export function useTodolistStore() {
   // Текущий статус сортировки
-  const currentStatusFilter = ref<TodolistStatusType>('todo')
+  const currentStatusFilter = ref<TodolistStatusType>('all')
 
   // Получить все тудулисты
   const getAllTodolist = computed(() => {
@@ -18,7 +18,7 @@ export function useTodolistStore() {
   })
 
   // Получить список тудулистов по текущему значению фильтра currentStatusFilter
-  const filterTodolist = computed(() => {
+  const getTodolistByFilter = computed(() => {
     return todolistList.value.filter((todo) => todo.status === currentStatusFilter.value)
   })
 
@@ -26,6 +26,15 @@ export function useTodolistStore() {
   const addNewTodo = (newTodoData: TodolistInfoType) => {
     console.log('asdas')
     todolistList.value.push(newTodoData)
+  }
+
+  // Изменить статус выполнения туду
+  const changeTodoStatus = (changedTodo: TodolistInfoType, newStatus: TodolistStatusType) => {
+    const findTodo = todolistList.value.find((todo) => todo.id === changedTodo.id)
+
+    if (findTodo) {
+      findTodo.status = newStatus
+    }
   }
 
   // Удалить тудулист
@@ -38,10 +47,11 @@ export function useTodolistStore() {
   }
 
   return {
-    getAllTodolist,
-    currentStatusFilter,
-    filterTodolist,
     addNewTodo,
-    deleteTodo
+    changeTodoStatus,
+    currentStatusFilter,
+    deleteTodo,
+    getTodolistByFilter,
+    getAllTodolist
   }
 }

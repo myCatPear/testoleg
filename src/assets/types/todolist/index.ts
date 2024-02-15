@@ -1,4 +1,4 @@
-export type TodolistStatusType = 'todo' | 'progress' | 'done'
+export type TodolistStatusType = 'all' | 'todo' | 'progress' | 'done'
 
 export type TodolistInfoType = {
   id: string

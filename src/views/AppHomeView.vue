@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import { useTodolistStore } from '@/stores/useTodolistStore'
-
-const { getAllTodolist } = useTodolistStore()
+import Todolist from '@/components/widgets/Todolist.vue';
 </script>
 
 <template>
-    {{ getAllTodolist }}
+    <Todolist />
 </template>
 
 <style scoped lang="scss"></style>
