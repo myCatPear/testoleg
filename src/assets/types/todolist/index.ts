@@ -1,10 +1,18 @@
-export type TodolistStatusType = 'all' | 'todo' | 'progress' | 'done'
+type TodoStatusType = 'all' | 'todo' | 'progress' | 'done'
 
-export type TodolistInfoType = {
+type TodoInfoType = {
   id: string
   title: string
-  status: TodolistStatusType
+  status: TodoStatusType
   description?: string
 }
 
-export type TodolistListType = TodolistInfoType[]
+type TodolistListType = TodoInfoType[]
+
+type TodoEditType = {
+  id: string
+  title?: string
+  description?: string
+}
+
+export { TodoStatusType, TodoInfoType, TodolistListType, TodoEditType }

@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import TodoInfo from '@/components/widgets/TodoInfo.vue'
 </script>
 
 <template>
-    TOdo
+  <TodoInfo />
 </template>
 
 <style scoped lang="scss"></style>

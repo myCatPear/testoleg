@@ -1,19 +1,16 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import NewTodoDialog from '@/components/dialogs/NewTodoDialog.vue'
+import TodoEditorDialog from '@/components/dialogs/TodoEditorDialog.vue'
 
-
-const dialog = ref(false)
+const isShowdialog = ref(false)
 </script>
 
 <template>
-  <NewTodoDialog v-if="dialog" v-model="dialog" />
+  <TodoEditorDialog v-if="isShowdialog" v-model="isShowdialog" />
 
   <header class="app-header">
     <h1><router-link to="/" class="app-logo">Todolist</router-link></h1>
-    <v-btn color="primary" @click="dialog = true">
-      Add todo
-    </v-btn>
+    <v-btn color="primary" @click="isShowdialog = true"> Add todo </v-btn>
   </header>
 </template>
 

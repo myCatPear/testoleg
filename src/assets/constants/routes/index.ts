@@ -1,0 +1,7 @@
+const APP_HOME_PATH = '/'
+const APP_HOME_PATH_NAME = 'home'
+
+const TODO_INFO_PATH = '/todo/:id'
+const TODO_INFO_PATH_NAME = 'todo'
+
+export { APP_HOME_PATH, APP_HOME_PATH_NAME, TODO_INFO_PATH, TODO_INFO_PATH_NAME }
