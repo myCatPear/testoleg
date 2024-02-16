@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PropType } from 'vue'
+import { PropType,ref } from 'vue'
 import type { TodoInfoType, TodoStatusType } from '@/assets/types/todolist'
 
 const props = defineProps({
@@ -15,6 +15,24 @@ const emits = defineEmits<{
   (e: 'delete', todo: TodoInfoType)
   (e: 'click', todo: TodoInfoType)
 }>()
+
+const onChangeStatusButtonClick = (event:MouseEvent, todo:TodoInfoType, status:TodoStatusType) => {
+  event.stopPropagation()
+  emits('changedTodoStatus', todo, status)
+}
+
+const onEditButtonClick = (event:MouseEvent, todo:TodoInfoType) => {
+  event.stopPropagation()
+  emits('edit', todo)
+}
+
+
+const onDeleteStatusButtonClick = (event:MouseEvent, todo:TodoInfoType) => {
+  event.stopPropagation()
+  emits('delete', todo)
+
+}
+
 </script>
 
 <template>
@@ -30,30 +48,30 @@ const emits = defineEmits<{
     <div
       v-if="todo.status === 'todo'"
       class="todo__icon todo__icon-todo"
-      @click="emits('changedTodoStatus', todo, 'progress')"
+      @click="event => onChangeStatusButtonClick(event, todo, 'progress')"
     >
       <v-icon icon="mdi-arrow-right"></v-icon>
     </div>
     <div
       v-if="todo.status === 'progress'"
       class="todo__icon todo__icon-progress"
-      @click="emits('changedTodoStatus', todo, 'done')"
+      @click="event => onChangeStatusButtonClick(event, todo, 'done')"
     >
       <v-icon icon="mdi-check"></v-icon>
     </div>
     <div
       v-if="todo.status === 'done'"
       class="todo__icon todo__icon-done"
-      @click="emits('changedTodoStatus', todo, 'progress')"
+      @click="event => onChangeStatusButtonClick(event, todo, 'progress')"
     >
       <v-icon icon="mdi-arrow-left"></v-icon>
     </div>
     <p>{{ todo.title }}</p>
     <div class="todo__icon-management">
-      <div class="todo__icon" @click="emits('edit', todo)">
+      <div class="todo__icon" @click="event => onEditButtonClick(event, todo)">
         <v-icon v-if="todo.status !== 'done'" icon="mdi-pencil"></v-icon>
       </div>
-      <div class="todo__icon" @click="emits('delete', todo)">
+      <div class="todo__icon" @click="event => onDeleteStatusButtonClick(event, todo)">
         <v-icon icon="mdi-trash-can"></v-icon>
       </div>
     </div>
@@ -77,6 +95,9 @@ const emits = defineEmits<{
     cursor: pointer;
     background-color: rgb(165, 92, 233);
   }
+  &:hover &__icon {
+    opacity: 1;
+  }
   &__todo {
     background-color: rgb(248, 255, 243);
   }
@@ -93,6 +114,7 @@ const emits = defineEmits<{
   &__icon {
     cursor: pointer;
     padding: 0.1rem;
+    opacity: 0;
   }
 
   &__icon:hover {

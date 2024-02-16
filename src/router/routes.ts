@@ -19,6 +19,10 @@ const routes: RouteRecordRaw[] = [
     path: TODO_INFO_PATH,
     name: TODO_INFO_PATH_NAME,
     component: TodoView
+  },
+  {
+    path: "/:catchAll(.*)",
+    redirect: APP_HOME_PATH  
   }
 ]
 

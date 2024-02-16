@@ -21,6 +21,7 @@ const props = defineProps({
 
 const emits = defineEmits<{
   (e: 'update:modelValue')
+  (e: 'done')
 }>()
 
 const { addNewTodo, editTodo } = useTodolistStore()
@@ -67,6 +68,7 @@ const onAddTaskButtonClick = () => {
 
   addNewTodo(newTodoParams)
   emits('update:modelValue')
+  emits('done')
 }
 
 /**
@@ -80,6 +82,8 @@ const onEditTaskButtonClick = () => {
   }
   editTodo(newTodoInfo)
   emits('update:modelValue')
+  emits('done')
+
 }
 
 const setInitialTodoInfo = () => {

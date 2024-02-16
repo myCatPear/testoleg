@@ -25,6 +25,7 @@ const getTodolists = computed(() => {
 
 // Изменился статус выполнения туду
 const changedTodoStatus = (todo: TodoInfoType, newStatus: TodoStatusType) => {
+  console.log('changedTodoStatus')
   changeTodoStatus(todo, newStatus)
 }
 
@@ -37,11 +38,15 @@ const onEditTodoButtonClick = (todo: TodoInfoType) => {
 
 // Произошёл клик по иконке удалить туду
 const onDeleteTodoIconClick = (todo: TodoInfoType) => {
+  console.log('onDeleteTodoIconClick')
+
   deleteTodo(todo.id)
 }
 
 // Произошёл клик по туду
 const onTodoClick = (todo: TodoInfoType) => {
+  console.log('onTodoClick')
+
   router.push({ name: TODO_INFO_PATH_NAME, params: { id: todo.id } })
 }
 </script>

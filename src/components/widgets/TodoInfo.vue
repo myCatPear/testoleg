@@ -1,13 +1,17 @@
 <script setup lang="ts">
+import {ref} from 'vue';
 import router from '@/router'
 import { useTodolistStore } from '@/stores/useTodolistStore'
 import { APP_HOME_PATH_NAME } from '@/assets/constants/routes'
+import TodoEditorDialog from '@/components/dialogs/TodoEditorDialog.vue'
 
 const { getTodoInfo, deleteTodo } = useTodolistStore()
 
 const todoId = router.currentRoute.value.params.id as string
 
-const getTodoInfoFromStore = getTodoInfo(todoId)
+const getTodoInfoFromStore = ref(getTodoInfo(todoId))
+
+const isShowdialog = ref(false)
 
 const onBackButtonClick = () => {
   router.push({ name: APP_HOME_PATH_NAME })
@@ -20,13 +24,16 @@ const onDeleteButtonClick = () => {
 </script>
 
 <template>
+  <TodoEditorDialog v-if="isShowdialog" v-model="isShowdialog" :action="'edit'" :todo="getTodoInfoFromStore" @done="getTodoInfoFromStore = getTodoInfo(todoId)"/>
+
+
   <div class="todo-info__buttons">
     <div class="todo-info__buttons_back" @click="onBackButtonClick">
       <v-icon icon="mdi-arrow-left"></v-icon>
       <span>Back</span>
     </div>
     <div class="todo-info__buttons_manadgment">
-      <v-btn :disabled="!getTodoInfoFromStore"> Edit </v-btn>
+      <v-btn :disabled="!getTodoInfoFromStore" @click="isShowdialog = true"> Edit </v-btn>
       <v-btn :disabled="!getTodoInfoFromStore" @click="onDeleteButtonClick"> Delete </v-btn>
     </div>
   </div>
